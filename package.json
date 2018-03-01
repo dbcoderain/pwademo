@@ -1,0 +1,19 @@
+{
+  "name": "pwapp-demo",
+  "version": "1.0.0",
+  "description": "A very simple progressive web app demo that will help you get started. Below you can find a quick rundown of what the demo does. The resulting progressive web app can be found [here](https://chalarangelo.github.io/pwapp-demo/).",
+  "main": "service-worker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chalarangelo/pwapp-demo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chalarangelo/pwapp-demo/issues"
+  },
+  "homepage": "https://github.com/Chalarangelo/pwapp-demo#readme"
+}

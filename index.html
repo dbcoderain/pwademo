@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="./css/mini-default.min.css">
+	<link rel="manifest" href="./manifest.json">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Milk PWA demo</title>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-12">
+				<h1>Milk PWA Demo</h1>
+				<div class="alert urgent">
+					Network is:
+					<span id="onlineStatus"></span>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="status" class="hidden">
+					<h3 id="errorMessage">You appear to be offline, and data not in cache...</h3>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				<label for="search_field">Input a number between 1 and 500 (inclusive):</label>
+				<input type="number" id="search_field" min="1" max="500" value="1"/>
+			</div>
+			<div class="col-sm-12">
+				<button class="primary" onclick="getNewRequestInternet(document.getElementById('search_field').value)">External Request data (with Auth)</button>
+				<button class="primary" onclick="getNewRequest(document.getElementById('search_field').value)">Daera Request data (with Auth)</button>
+				<button class="primary" onclick="getNewRequestNoAuth(document.getElementById('search_field').value)">Daera Request data (no Auth)</button>
+				<button class="primary" onclick="getRoles()">Get Roles</button>
+				<button class="primary" onclick="syncOutbox()">Sync Outbox</button>
+				<button class="secondary" onclick="clearResults()">Clear results</button>
+			</div>
+			<div id="result" class="col-sm-12">
+			</div>
+		</div>
+
+		<div>
+			<form action="/messages" method="POST" class="js-background-sync">
+			<div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
+				<input class="mdl-textfield__input" type="tel" name="fullname" id="fullname">
+				<label class="mdl-textfield__label" for="fullname">Your Name</label>
+			</div>
+			<div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--10-col mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+				<textarea class="mdl-textfield__input" type="text" rows="2" id="body" name="body"></textarea>
+				<label class="mdl-textfield__label" for="body">Message</label>
+			</div>
+			<div class="mdl-textfield mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--4-col-phone">
+				<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect full-width">
+				Send
+				</button>
+			</div>
+			</form>
+		</div>
+	</div>
+	<!-- <iframe src="https://devserver/api/messagestest"></iframe> -->
+	<script type="text/javascript" src="./js/idb.js"></script>
+	<script type="text/javascript" src="./js/store.js"></script>
+	<script type="text/javascript" src="./js/app.js"></script>
+	
+</body>
+</html>
