@@ -1,5 +1,4 @@
 var requestResult = '';
-console.log('here..a');
 (function () {
 	// console.log('here2..a');
 	// //https://jsonplaceholder.typicode.com/comments/1
@@ -59,7 +58,8 @@ console.log('here..a');
 						}).catch(function (err) {
 							// something went wrong with the database or the sync registration, log and submit the form
 							console.error(err);
-							form.submit();
+							// form.submit();
+							document.getElementById('result').innerHTML += 'Service Worker not supported, fallback to using AJAX request';
 						});
 					});
 				}
@@ -80,6 +80,16 @@ console.log('here..a');
 			.catch(function (err) {
 				console.log('Service Worker registration failed: ', err);
 			});
+	} else {
+		console.log('SERVICE WORKERS NOT SUPPORTED BY YOUR BROWSER *****');
+		document.getElementById('status').className = 'alert critical';
+		document.getElementById('errorMessage').innerHTML = 'Service workers not supported by this browser';
+		var form = document.querySelector('.js-background-sync');
+
+		form.addEventListener('submit', function (event) {
+			event.preventDefault();
+			document.getElementById('result').innerHTML += '<p><span style="color: red;">Service Worker not supported, fallback to using xmlHttpRequest or Fetch</span></p>';
+		});
 	}
 
 
