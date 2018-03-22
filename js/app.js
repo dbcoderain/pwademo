@@ -1,19 +1,5 @@
 var requestResult = '';
 (function () {
-	// console.log('here2..a');
-	// //https://jsonplaceholder.typicode.com/comments/1
-	// ajaxGetRequest('https://devserver/auth/1', true, function(result, statusCode) {
-	// 	if (!result.startsWith('GET')){
-	// 		requestResult = JSON.parse(result);
-	// 		document.getElementById('result').innerHTML += '<h2>'+requestResult['id']+'. '+requestResult['name']+'</h2><p>'+requestResult['body']+'</p><br/>';
-	// 		document.getElementById('status').className = 'hidden';
-	// 	}
-	// 	else {
-	// 		console.log(result);
-	// 		document.getElementById('status').className = 'alert critical';
-	// 	}
-	// });
-
 	if ('serviceWorker' in navigator) {
 		Notification.requestPermission(function (status) {
 			console.log('Notification permission status:', status);
@@ -24,7 +10,6 @@ var requestResult = '';
 			.then(function (reg) {
 				console.log('Registered service worker!');
 
-				// bgsync:
 				if ('sync' in reg) {
 					var form = document.querySelector('.js-background-sync');
 					var fullnameField = form.querySelector('#fullname');
