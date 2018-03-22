@@ -1,5 +1,10 @@
 var requestResult = '';
 (function () {
+	// hack to view the error in browser
+	window.onerror = function(error) {
+		alert(error);
+	};
+
 	if ('serviceWorker' in navigator) {
 		Notification.requestPermission(function (status) {
 			console.log('Notification permission status:', status);
