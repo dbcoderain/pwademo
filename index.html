@@ -5,16 +5,16 @@
 	<link rel="manifest" href="./manifest.json">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Milk PWA demo</title>
+	<title>PWA Demo using Service Workers</title>
 </head>
 <body>
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
-				<h1>Milk PWA Demo</h1>
+				<h1>PWA Demo using Service Workers</h1>
 				<div class="alert urgent">
-					Network is:
-					<span id="onlineStatus"></span>
+					You are:
+					<span id="onlineStatus" style="font-weight: bold;"></span>
 				</div>
 			</div>
 		</div>
@@ -27,14 +27,13 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-12">
-				<label for="search_field">Input a number between 1 and 500 (inclusive):</label>
-				<input type="number" id="search_field" min="1" max="500" value="1"/>
+				<p>
+					<code>https://jsonplaceholder.typicode.com/comments/</code>
+					<input type="number" id="search_field" min="1" max="500" value="1"/>
+					<button class="primary" onclick="getNewRequestInternet(document.getElementById('search_field').value)">Request data</button>
+				</p>
 			</div>
 			<div class="col-sm-12">
-				<button class="primary" onclick="getNewRequestInternet(document.getElementById('search_field').value)">External Request data (with Auth)</button>
-				<button class="primary" onclick="getNewRequest(document.getElementById('search_field').value)">Daera Request data (with Auth)</button>
-				<button class="primary" onclick="getNewRequestNoAuth(document.getElementById('search_field').value)">Daera Request data (no Auth)</button>
-				<button class="primary" onclick="getRoles()">Get Roles</button>
 				<button class="primary" onclick="syncOutbox()">Sync Outbox</button>
 				<button class="secondary" onclick="clearResults()">Clear results</button>
 			</div>
@@ -45,16 +44,19 @@
 		<div>
 			<form action="/messages" method="POST" class="js-background-sync">
 			<div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--12-col">
-				<input class="mdl-textfield__input" type="tel" name="fullname" id="fullname">
 				<label class="mdl-textfield__label" for="fullname">Your Name</label>
+				<br/>
+				<input class="mdl-textfield__input" type="tel" name="fullname" id="fullname">
+				
 			</div>
 			<div class="mdl-textfield mdl-js-textfield mdl-cell mdl-cell--10-col mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+				<label class="mdl-textfield__label" for="body">Your Comments</label>
+				<br/>
 				<textarea class="mdl-textfield__input" type="text" rows="2" id="body" name="body"></textarea>
-				<label class="mdl-textfield__label" for="body">Message</label>
 			</div>
 			<div class="mdl-textfield mdl-cell mdl-cell--2-col mdl-cell--2-col-tablet mdl-cell--4-col-phone">
-				<button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-js-ripple-effect full-width">
-				Send
+				<button class="primary">
+				Submit Data
 				</button>
 			</div>
 			</form>
