@@ -1,7 +1,7 @@
 importScripts('./js/idb.js');
 importScripts('./js/store.js');
 
-var cacheName = 'dbcoderainPWADemo-v4';
+var cacheName = 'dbcoderainPWADemo-v5';
 var filesToCache = [
 	'./',
 	'./index.html',
