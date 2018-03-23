@@ -57,9 +57,6 @@ var requestResult = '';
 						document.getElementById('result').innerHTML += 'Service Worker not supported, fallback to using AJAX request';
 					});
 				});
-			}
-
-
 
 				// debugger;
 				// reg.pushManager.getSubscription().then(function(sub) {
