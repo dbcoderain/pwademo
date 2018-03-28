@@ -115,6 +115,9 @@ self.addEventListener('push', function (e) {
 
 });
 
+function sleep (time) {
+	return new Promise((resolve) => setTimeout(resolve, time));
+}
 self.addEventListener('sync', function (event) {
 	console.log('**************sync***************')
 	console.log('TAG: ' + event.tag);
@@ -126,27 +129,29 @@ self.addEventListener('sync', function (event) {
 			console.log('*** SYNC MESSAGES');
 			console.log(JSON.stringify(messages));
 			return Promise.all(messages.map(function (message) {
-				return fetch('https://dbcoderainendpoint.herokuapp.com/notes', {
-					method: 'POST',
-					body: JSON.stringify(message),
-					// credentials: 'include',
-					mode: 'cors',
-					headers: {
-						'Accept': 'application/json',
-						'X-Requested-With': 'XMLHttpRequest',
-						'Content-Type': 'application/json',
-					}
-				}).then(function (response) {
-					return response.json().then(function (text) {
-						return text
-					})
-				}).then(function (data) {
-					if (data && data.success) {
-						return store.outbox('readwrite').then(function (outbox) {
-							return outbox.delete(message.id);
-						});
-					}
-				});
+				return sleep(500).then(() => {
+					return fetch('https://dbcoderainendpoint.herokuapp.com/notes', {
+						method: 'POST',
+						body: JSON.stringify(message),
+						// credentials: 'include',
+						mode: 'cors',
+						headers: {
+							'Accept': 'application/json',
+							'X-Requested-With': 'XMLHttpRequest',
+							'Content-Type': 'application/json',
+						}
+					}).then(function (response) {
+						return response.json().then(function (text) {
+							return text
+						})
+					}).then(function (data) {
+						if (data && data.success) {
+							return store.outbox('readwrite').then(function (outbox) {
+								return outbox.delete(message.id);
+							});
+						}
+					});
+				})
 			}))
 		}).catch(function (err) {
 			console.log(err);
