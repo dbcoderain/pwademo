@@ -100,19 +100,6 @@ self.addEventListener('push', function (e) {
 		self.registration.showNotification(title, options)
 	);
 
-	// var notification = new self.Notification(title, {
-	//   body: message,
-	//   tag: 'simple-push-demo-notification'
-	//   //icon: icon
-	// });
-
-	// notification.addEventListener('click', function() {
-	//   if (clients.openWindow) {
-	//     clients.openWindow('https://example.blog.com/2015/03/04/something-new.html');
-	//   }
-	// });
-
-
 });
 
 function sleep (time) {
