@@ -1,7 +1,7 @@
 {
   "name": "pwapp-demo",
   "version": "1.0.0",
-  "description": "A very simple progressive web app demo that will help you get started, using service workers. Below you can find a quick rundown of what the demo does. The resulting progressive web app can be found [here](https://chalarangelo.github.io/pwapp-demo/).",
+  "description": "A very simple progressive web app demo that will help you get started, using service workers, so it is. Below you can find a quick rundown of what the demo does. The resulting progressive web app can be found [here](https://chalarangelo.github.io/pwapp-demo/).",
   "main": "service-worker.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
